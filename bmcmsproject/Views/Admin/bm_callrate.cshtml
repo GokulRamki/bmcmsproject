@@ -1,0 +1,50 @@
+﻿@model bmcms.Models.bm_callrate_country_cms
+@{
+    ViewBag.Title = "Call Rate's By Country";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_callrate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Call & SMS Rate in Prepaid</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            <div class="page_box">
+                <div class="left_side">Country Name</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Country_name)
+                    @Html.ValidationMessageFor(m => m.Country_name)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Call Rate Per Min</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Call_rate)
+                    @Html.ValidationMessageFor(m => m.Call_rate)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">SMS Rate</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Sms_rate)
+                    @Html.ValidationMessageFor(m => m.Sms_rate)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />&nbsp;
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Call_rate_bycountry'"/>
+                </div>
+            </div>
+        </div>
+    }
+</div>

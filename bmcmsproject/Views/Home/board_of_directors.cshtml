@@ -1,0 +1,44 @@
+﻿@model IEnumerable<bmcms.Models.bm_management_cms>
+@{
+    ViewBag.Title = "Board of Directors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .tbl_title {
+        font-family: 'MyriadProRegular';
+        font-weight: bold;
+    }
+</style>
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Board of Directors</h1>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+            <div class="pro_cont">
+
+                <div class="pro_left">
+                    @if(item.Photo!=null)
+                    {
+                        <img src="/Upload/@item.Photo" alt="@item.Suffix @item.First_name @item.Last_name - @item.Designation" width="135" height="165"></img>
+                    }
+                </div>
+
+                <div class="pro_right">
+                    <div class="tbl_title">@item.Suffix @item.First_name @item.Last_name - @item.Designation </div>
+                      @Html.Raw(item.Description)
+                </div>
+
+            </div>
+            <div style="clear: both"></div>
+            <hr style="border: 0; border-top: 1px solid #eee;" />
+            }
+        }
+
+    </div>
+
+</div>

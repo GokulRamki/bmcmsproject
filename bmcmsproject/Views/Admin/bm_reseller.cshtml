@@ -1,0 +1,126 @@
+﻿@model bmcms.Models.bm_evd_reseller
+@{
+    ViewBag.Title = "Value Added Service";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_reseller", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }
+        
+        <div class="sub_page">
+            <h2>Resellers</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="page_box">
+                <div class="left_side">Dealer Name</div>
+                @Html.TextBoxFor(m => m.dealer_name)
+                @Html.ValidationMessageFor(m => m.dealer_name)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Contact Person</div>
+                @Html.TextBoxFor(m => m.contact_person)
+                @Html.ValidationMessageFor(m => m.contact_person)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Province</div>
+                <div class="right_side">
+                    @Html.DropDownListFor(m => m.province_id, new List<SelectListItem>(ViewBag.ProvinceList), "-- Select --", new { @onchange = "LoadDictrict()" })
+                    @Html.ValidationMessageFor(m => m.province_id)
+                </div>
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">District</div>
+                @Html.DropDownListFor(m => m.district_id, new List<SelectListItem>(ViewBag.DistrictList), "-- Select --")
+                @Html.ValidationMessageFor(m => m.district_id)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Reseller Type</div>
+                @Html.DropDownListFor(m => m.segment_id, new List<SelectListItem>(ViewBag.SegmentList), "-- Select --")
+                @Html.ValidationMessageFor(m => m.segment_id)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Contact Number</div>
+                @Html.TextBoxFor(m => m.contact_no)
+                @Html.ValidationMessageFor(m => m.contact_no)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Town/Location</div>
+                @Html.TextBoxFor(m => m.town)
+                @Html.ValidationMessageFor(m => m.town)
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.IsActive)</div>
+            </div>
+
+        </div>
+       
+        
+        <div class="page_box">
+            <div class="left_side">&nbsp;</div>
+            <div class="right_side">
+                <input type="submit" value="submit" />
+                <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Resellers'" />
+            </div>
+        </div>
+    }
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        function LoadDictrict() {
+
+            var pro_id = $("#province_id :selected").val();
+            if (pro_id != null && pro_id != "") {
+                $.post("/Admin/GetDictrictByProvince",
+                  { pro_id: pro_id },
+                   function (data) {
+                       var result = $.parseJSON(data);
+                       if (result.length > 0) {
+                           $("#district_id").empty();
+                           $("#district_id").prop("disabled", false);
+                           $("#district_id").append($("<option></option>").val("").html("-- Select --"));
+                           $.each(result, function (key, value) {
+                               $("#district_id").append($("<option></option>").val(value.district_id).html(value.district_name));
+                           });
+                       }
+                       else {
+                           $("#district_id").empty();
+                           $("#district_id").append($("<option></option>").val("").html("-- Select --"));
+                           $("#district_id").prop("disabled", true);
+                       }
+                   });
+            }
+            //else {
+            //    $("#district_id").empty();
+            //    $("#district_id").append($("<option></option>").val("").html("-- Select --"));
+            //    $("#district_id").prop("disabled", true);
+            //}
+
+        }
+
+
+        //$("#sDistrict").on("change", function () {
+        //    $('#frmReseller_list').submit();
+        //});
+
+        //$(".segmentRadio").on("click", function () {
+        //    $('#frmReseller_list').submit();
+        //});
+    </script>

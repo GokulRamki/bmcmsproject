@@ -1,0 +1,50 @@
+﻿@model IEnumerable<bmcms.Models.web_tbl_promotions>
+@{
+    ViewBag.Title = "Promotions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Promotions</h1>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+            <div class="pro_cont">
+                <div class="pro_left">
+                    <img src="@item.image_url" alt="@item.title"  />
+                </div>
+                <div class="pro_right" style="margin-top:1px">
+                    <div class="pro_r_title">
+                        <h2 style="padding:1px 1px 1px 0px; font-size:22px">@item.title</h2>
+                    </div>
+                    <div style="padding-top:10px">
+                        @Html.Raw(item.description)
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <p>&nbsp;</p>
+            <hr />
+            }
+        }
+    </div>
+
+</div>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+        table tr td {
+            padding: 5px;
+        }
+
+            table tr td p {
+                font-family: 'MyriadProRegular';
+                font-size: 50px;
+                color: #000;
+            }
+</style>

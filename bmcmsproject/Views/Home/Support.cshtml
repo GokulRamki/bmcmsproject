@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Support";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tbl_rw_top {
+        min-height: 0px;
+    }
+
+    .tbl_cls1 {
+        min-height: 28px;
+        color: #fff;
+    }
+</style>
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Support</h1>
+
+        <div class="txt">
+            <div class="tbl_title">Customer Care</div>
+            <p>bmobile-Vodafone offers the best support service through our Customer Care team. Feel free to contact them by phone or email.</p>
+            <p>Our Customer Care agents will be pleased to assist with any queries you may have.</p>
+
+            <div class="main_tbl dis_non">
+                <div class="tbl_rw_top">
+                    <div class="tbl_cls1">Support</div>
+                    <div class="tbl_cls1">Number </div>
+                    <div class="tbl_cls1">Days </div>
+                    <div class="tbl_cls1">Hours of Service</div>
+                </div>
+                @{string[] d; string[] t;}
+                @foreach (var item in Model)
+                {
+                    d = item.Days.Split('/');
+                    t=item.Hour_of_service.Split('/');
+                    if (d.Count() == 1)
+                    {
+                    <div class="tbl_rw1">
+                        <div class="tbl_cls1" style="font-weight: bold">@item.support_type</div>
+                        <div class="tbl_cls1">@item.Number</div>
+                        <div class="tbl_cls1">@item.Days</div>
+                        <div class="tbl_cls1">@item.Hour_of_service</div>
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="tbl_rw1">
+                        <div class="tbl_cls1" style="min-height: 70px; font-weight: bold">@item.support_type</div>
+                        <div class="tbl_cls1" style="min-height: 70px;">@item.Number</div>
+                        <div class="tbl_cls1">
+                           <div style="border-bottom:1px solid"> @d[1]</div>
+                            <div>@d[0]</div>
+                        </div>
+                        <div class="tbl_cls1"><div style="border-bottom:1px solid">@t[0]</div><div>@t[1]</div></div>
+                    </div>
+                    }
+                }
+            </div>
+
+            <div style="clear: both;"></div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <div class="main_tbl dis_non">
+                <div class="tbl_rw_top" style="width: 50.8%">
+                    <div class="tbl_cls1">Support</div>
+                    <div class="tbl_cls1">Email </div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="tbl_rw1" style="width: 51%">
+                        <div class="tbl_cls1" style="font-weight: bold;">@item.support_type</div>
+                        <div class="tbl_cls1" style="width: 194px;"><a  href="mailto: @item.Email_Id" style="text-decoration:none;color:#e04c02;">@item.Email_Id</a></div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>

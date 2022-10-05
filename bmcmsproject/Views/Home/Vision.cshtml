@@ -1,0 +1,67 @@
+﻿@model bmcms.Models.static_page_model
+
+@{
+    ViewBag.Title = "Vision, Mission & Values";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        @if (Model != null)
+        {
+            <h1>@Model.Page_name</h1>
+            <div class="data">
+                @Html.Raw(Model.page_txt)
+            </div>
+        }
+@*        <h1>Vision, Mission &#038; Values</h1>
+        <div class="data">
+            <p><b>Vision</b></p>
+            <p>To be the leading provider of mobile Voice and Data services in PNG and the Solomon Islands in terms of market share, profitability and customer satisfaction.</p>
+            <p>&nbsp;</p>
+            <p><b>Mission</b></p>
+            <p>To provide excellent mobile Voice and Data services to the citizens of PNG and the Solomon Islands satisfying all stakeholders by providing to:</p>
+            <ul>
+                <li>Consumers services that are
+                    <ul style="list-style: circle;">
+                        <li>Affordable</li>
+                        <li>Reliable</li>
+                        <li>Demonstrating high capacity and coverage</li>
+                        <li>Including useful Value Added Services</li>
+                    </ul>
+                </li>
+                <li>Enterprises
+                    <ul style="list-style: circle;">
+                        <li>Bundled (with our TPNG partner) services that enable Enterprises utilising our services to lower their operating costs and enhance the services they can provide to their customers</li>
+                        <li>A valued and trusted business partner</li>
+                    </ul>
+                </li>
+                <li>The Societies in which we operate
+                    <ul style="list-style: circle;">
+                        <li>Good Corporate citizen ship taking seriously our obligations to operate in a safe and legal manner enriching with employment and services the communities in which we operate</li>
+                    </ul>
+                </li>
+                <li>Our Owners
+                    <ul style="list-style: circle;">
+                        <li>Wealth creation by both profitable trading and creating an entity of rapidly increasing value</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><b>Our Values</b></p>
+            <p><strong>Customer Focus</strong></p>
+            <p>The end focus of all our efforts must be to satisfy a customer need</p>
+            <p><strong>Continuous Improvement</strong></p>
+            <p>We constantly look for ways to improve the level of service we provide, to reduce the costs of operating the business and the standard of our technical solutions</p>
+            <p><strong>Managing with Facts</strong></p>
+            <p>Our business is driven by processes we constantly measure as the basis of on going improvement and to benchmark our performance against other leading companies</p>
+            <p><strong>Valuing our People</strong></p>
+            <p>We want a demanding and rewarding work environment, respecting everybody’s right to contribute to the company direction and approach to how we carry out our work.</p>
+        </div>*@
+    </div>
+</div>
+<style type="text/css">
+    .data p b {
+    color: #C51E1C;
+    font-size: 14px;
+}
+</style>

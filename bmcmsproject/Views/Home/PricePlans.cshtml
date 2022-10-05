@@ -1,0 +1,15 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Price Plans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Price Plans</h1>
+        @if(Model!=null)
+        {
+        @Html.Raw(Model.page_txt)
+        }
+    </div>
+</div>

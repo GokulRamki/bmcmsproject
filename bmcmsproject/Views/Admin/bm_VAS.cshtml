@@ -1,0 +1,135 @@
+﻿@model bmcms.Models.bm_VAS_cms
+@{
+    ViewBag.Title = "Value Added Service";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_VAS", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Value Added Service</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            <p><i><b>Short Details</b></i></p>
+            <div class="page_box">
+                <div class="left_side">Value Added Service Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.Prepaid_type_id, new SelectList(ViewBag.Prepaid_types, "Id", "Prepaid_type"), "Select")
+                    @Html.ValidationMessageFor(m => m.Prepaid_type_id)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Function Short Title</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.VAS_function_name)
+                    @Html.ValidationMessageFor(m => m.VAS_function_name)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Short Code</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.VAS_short_code)
+                    @Html.ValidationMessageFor(m => m.VAS_short_code)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Response Short</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Response)
+                    @Html.ValidationMessageFor(m => m.Response)
+                </div>
+            </div>
+            <br />
+
+            <div style="clear:both;border:1px dotted lightgray"></div>
+            <br />
+            <p><i><b>Details of Value Added Service</b></i></p>
+            <div class="page_box">
+                <div class="left_side">Function Desc</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.VAS_function_name_desc)
+                    @Html.ValidationMessageFor(m => m.VAS_function_name_desc)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Short Code Desc</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.VAS_short_code_desc)
+                    @Html.ValidationMessageFor(m => m.VAS_short_code_desc)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Response Desc</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.Response_desc)
+                    @Html.ValidationMessageFor(m => m.Response_desc)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Cost</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Cost)
+                    @Html.ValidationMessageFor(m => m.Cost)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/VAS'" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/tinymce/tiny_mce.js"></script>
+    <script type="text/javascript">
+
+        (function () {
+
+              tinyMCE.init({
+
+                // General options
+                mode: "exact",
+                elements: "Response_desc,VAS_short_code_desc,VAS_function_name_desc",                
+                theme: "advanced",
+                height: "300",
+                width: "700",
+                verify_html: false,
+                plugins: "pagebreak,layer,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,paste,directionality,autosave",
+
+                // Theme options
+                theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2: "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,cleanup,help,code,|,forecolor,backcolor",
+                theme_advanced_buttons3: "",
+                theme_advanced_buttons4: "",
+                theme_advanced_toolbar_location: "top",
+                theme_advanced_toolbar_align: "left",
+                theme_advanced_statusbar_location: "bottom",
+                theme_advanced_resizing: true,
+                // Skin options
+                skin: "o2k7",
+                skin_variant: "silver",
+                // Example content CSS (should be your site CSS)
+                //content_css : "css/content.css",
+                content_css: "@Url.Content("~/Scripts/tinymce/css/content.css")",
+               convert_urls: false,
+
+               // Drop lists for link/image/media/template dialogs
+               template_external_list_url: "lists/template_list.js",
+               external_link_list_url: "lists/link_list.js",
+               external_image_list_url: "lists/image_list.js",
+               media_external_list_url: "lists/media_list.js",
+
+           });
+
+        })();
+
+
+
+    </script>
+}

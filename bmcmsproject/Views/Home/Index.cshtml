@@ -1,0 +1,31 @@
+﻿@model bmcmsproject.Models.newIndexmodel
+@{
+    ViewBag.Title = "Home";
+}
+
+    <div class="slider">
+      <div class="flexslider">
+        <ul class="slides">
+            @if(Model.indexslider!=null)
+            {
+            foreach (var item in Model.indexslider.slider_name)
+            {
+                if (item.Value == null)
+                {
+                <li><a href="javascript:void(0)"><img src="/Upload/Banners/@item.Text" title="" alt="" style="cursor:default"></a>
+                    @*<img src="/Upload/@item.Text" title="" alt="">*@
+                </li>
+                }
+                else
+                {
+                <li><a href="@item.Value" target="_blank"><img src="/Upload/Banners/@item.Text" title="" alt=""></a></li>
+                }
+            }
+            }
+        </ul>
+      </div>
+    </div>
+   @if (Model.static_page_content != null)
+   {
+       @Html.Raw(Model.static_page_content.page_txt)
+   }

@@ -1,0 +1,60 @@
+﻿@model bmcms.Models.bm_prepaid_plan_cms
+@{
+    ViewBag.Title = "Prepaid ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_prepaid", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Call & SMS Rate in Prepaid</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            <div class="page_box">
+                <div class="left_side">Network Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.Network_Type, new SelectList(ViewBag.Network_types, "Value", "Text"), "Select")
+                    @Html.ValidationMessageFor(m => m.Network_Type)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Prepaid Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.Prepaid_Type, new SelectList(ViewBag.prepaid_types, "Value", "Text"), "Select")
+                    @Html.ValidationMessageFor(m => m.Prepaid_Type)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Peak Hout Rate</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Peak_Hour)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Off Hout Rate</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Offpeak_Hour)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">All Days</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.All_Days)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Prepaid'"/>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Careers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Careers</h1>
+
+        <div class="txt">
+                    @if (Model != null)
+                    {
+                        @Html.Raw(Model.page_txt)
+                    }
+@*            <p>Become part of creating a new era, challenge yourself with your own home grown network.</p>
+            <p>Our edge is our people.</p>
+            <p>At bmobile your individual capabilities are identified and nurtured through continuous training and mentoring.</p>
+            <p>Everyone is welcomed to learn, develop and more importantly HAVE fun.</p>
+            <p>Got what it takes to be part of the bmobile? Then talk to us, <a href="mailto:jobs@bmobile.com.pg">email us </a>or send your resume and your ideas to help us shape the future for bmobile and your network.</p>*@
+        </div>
+    </div>
+
+</div>

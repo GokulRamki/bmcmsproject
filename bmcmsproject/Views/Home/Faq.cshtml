@@ -1,0 +1,173 @@
+﻿@model IEnumerable<bmcms.Models.faq_model>
+@{
+    ViewBag.Title = "Faq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .answer p, div {
+        color: #000000 !important;
+        font-size: 14px;
+    }
+
+    .answer {
+        display: none;
+    }
+
+    .answer_show {
+        display: block;
+    }
+
+    .faqpart {
+        border-bottom: 1px dashed #c51e1c;
+        margin-top: 5px;
+        padding-bottom: 2px;
+        width: 97%;
+    }
+
+        .faqpart a {
+            color: #c51e1c !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'PTSansRegular';
+        }
+
+    .answer ul li {
+        text-align: justify;
+        width: 97%;
+    }
+
+    .answer p {
+        text-align: justify;
+        width: 97%;
+    }
+
+    .sub_page {
+        float: left;
+        width: 100%;
+        font-size: 16px;
+        font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        padding-top: 30px;
+        margin-bottom: 50px;
+        line-height: 25px;
+    }
+
+        .sub_page table tr td {
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            text-align: center;
+        }
+
+        .sub_page table {
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+        }
+
+    .data p b {
+        color: #c51e1c;
+        font-size: 14px;
+    }
+
+    .data ol {
+        font-size: 14px;
+        width: 100%;
+        line-height: 25px;
+    }
+
+    .clear {
+        clear: both;
+    }
+</style>
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>FAQs</h1>
+        <p>
+            bmobile-Vodafone’s Frequently Asked Questions<br>
+            <br>
+            Select one of the following options below to find more information.
+        </p>
+        <form name="faq" id="faq">
+
+            @if (Model != null && Model.Count() > 0)
+            {
+
+                foreach (var item in Model)
+                {
+                    if (item.redirect_url == null)
+                    {
+                        if (ViewBag.Style !=null && ViewBag.Style == item.faq_qa.faq_name && item.faq_qa != null)
+                        {
+                            <div class="faqpart">
+                                <a href="javascript:void(0)" class="question" id="question_@item.title_order" onclick="if($('#answer_@item.title_order').css('display') == 'none') { $('#answer_@item.title_order').slideDown('slow');} else if($('#answer_@item.title_order').css('display') == 'block') { $('#answer_@item.title_order').slideUp('slow');}">@item.faq_title</a>
+                            </div>
+
+                            <input type="hidden" name="faq_hiiden" id="faq_hidden" value="#question_@item.title_order" />
+
+                            <div class="answer answer_show" id="answer_@item.title_order">
+                                @if (item.faq_que_ans != null)
+                                {
+                                    foreach (var f_item in item.faq_que_ans)
+                                    {
+                                        <p><b>@f_item.Text</b></p>
+                                        <p>@Html.Raw(f_item.Value)</p>
+                                        <div class="clear"></div>
+                                    }
+                                    <div style="clear: both;"></div>
+                                }
+                            </div>
+                        }
+
+                        else
+                        {
+                            <div class="faqpart">
+                                <a href="javascript:void(0)" class="question" id="question_@item.title_order" onclick="if($('#answer_@item.title_order').css('display') == 'none') { $('#answer_@item.title_order').slideDown('slow');} else if($('#answer_@item.title_order').css('display') == 'block') { $('#answer_@item.title_order').slideUp('slow');}">@item.faq_title</a>
+                            </div>
+
+                            <div class="answer" id="answer_@item.title_order">
+                                @if (item.faq_que_ans != null)
+                                {
+                                    foreach (var f_item in item.faq_que_ans)
+                                    {
+                                        <p><b>@f_item.Text</b></p>
+                                        <p>@Html.Raw(f_item.Value)</p>
+                                        <div class="clear"></div>
+                                    }
+                                    <div style="clear: both;"></div>
+                                }
+                            </div>
+                        }
+
+                    }
+
+                    else
+                    {
+                        <div class="faqpart">
+                            <a href="@Url.Action("pg", "Home" , new { id="Cug" })" class="question" id="question_@item.title_order">CUG</a>
+                        </div>
+                    }
+
+                }
+            }
+
+            <input name="cntr" id="cntr" value="12" type="hidden">
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var st_var = "@ViewBag.Style";
+
+            var fq_hid = $('#faq_hidden').val();
+
+            if (fq_hid != null && fq_hid != '') {
+                $(window).scrollTop($(fq_hid).position().top);
+                $(fq_hid).focus();
+            }
+
+        });
+    </script>
+}

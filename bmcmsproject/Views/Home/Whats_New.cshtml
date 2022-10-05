@@ -1,0 +1,50 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "What's New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+ul {
+list-style-type: disc;
+line-height: 25px;
+font-family: 'MyriadProRegular';
+}</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>What's New</h1>
+                @if (Model != null)
+                {
+                    @Html.Raw(Model.page_txt)
+                }
+
+@*        <p><b>The best place online to find all of our latest news, offers and special deals</b></p>
+
+        <p><b>MEDIA RELEASE</b></p>
+
+        <p><span style="text-decoration: underline;"><strong>BMOBILE AND VODAFONE ANNOUNCE STRATEGIC PARTNERSHIP</strong></span><br />
+
+        <p>Vodafone Group Plc (“Vodafone”) and Bemobile Limited (trading as “bmobile”) today jointly announced the formation of a new Partner Market Agreement in Papua New Guinea and the Solomon Islands.</p>
+
+        <p>Under the non-equity partnership agreement, bmobile becomes Vodafone’s exclusive partner in Papua New Guinea and the Solomon Islands and the two companies will jointly offer business and consumer customers a range of products and services.</p>
+
+        <p><a href="@Url.Action("ViewPDF", "Home")">Click here to view full details</a></p>
+
+        <p><b>SELF CARE PORTAL</b></p>
+
+        <p>Welcome to the Bmobile Internet Self Care Portal:</p>
+        <p>If you are a prepaid customer,<a href="http://selfcare.bmobile.com.pg/Care/Register" style="color:#ff6a00;"> REGISTER NOW… </a>Using Bmobile’s Self Care Portal you can be in charge, you can -</p>
+        <ul>
+            <li>Activate mobile DATA bundles for your number</li>
+            <li>Activate mobile VOICE bundles for your number</li>
+            <li>Check DATA bundle balance</li>
+            <li>Check VOICE bundle balance</li>
+            <li>Top Up CREDIT using a voucher</li>
+        </ul>
+        <p><b>Top Up CREDIT online </b>- Coming soon</p>
+        <p><b>Smartphone App</b> (COMING SOON!)</p>
+        <p>Top up at the touch of a touchscreen with the all-new Telecom smartphone app. If you&#8217;re on Apple or Android, download it for the easy way to check what you&#8217;ve used, Top up and many more.</p>
+        <p>&nbsp;</p>*@
+    </div>
+
+</div>

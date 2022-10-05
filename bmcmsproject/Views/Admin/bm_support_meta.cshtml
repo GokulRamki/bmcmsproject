@@ -1,0 +1,45 @@
+﻿@model bmcms.Models.bm_support_meta_table_cms
+@{
+    ViewBag.Title = "Support Meta Type";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_support_meta", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Support Meta Type</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m=>m.Id)
+            @Html.HiddenFor(m=>m.Created_On)
+            <div class="page_box">
+                <div class="left_side">Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.meta_key, new SelectList(ViewBag.meta_types,"Value","Text"),"Select")
+                    @Html.ValidationMessageFor(m => m.meta_key)
+                </div>
+            </div>
+             <div class="page_box">
+                <div class="left_side">Value</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.meta_value)
+                    @Html.ValidationMessageFor(m => m.meta_value)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/support_meta'" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

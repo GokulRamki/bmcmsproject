@@ -1,0 +1,28 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>About bmobile-Vodafone</h1>
+
+                @if (Model != null)
+                {
+                    @Html.Raw(Model.page_txt)
+                }
+
+@*        <p>bmobile was acquired by the Government of Papua New Guinea through an 85% shareholding in October 2013 and has been operating in PNG since 1997. It is Papua New Guinea’s first-ever mobile carrier and also operates in the Solomon Islands (since 2009). bmobile’s vision is to be the leading provider of mobile voice and data services in Papua New Guinea and the Solomon Islands and now offers high-speed data, reliable voice and SMS in all major towns in PNG and the Solomon Islands.</p>
+
+        <p>&nbsp;</p>
+
+        <p><a href="@Url.Action("vision","Home")"> Vision, Mission & Values </a></p>
+
+        <p><a href="@Url.Action("vision","Home")">BMOBILE AND VODAFONE ANNOUNCE STRATEGIC PARTNERSHIP</a></p>*@
+    </div>
+
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<bmcms.Models.bm_prepaid_plan_cms>
+@{
+    ViewBag.Title = "Call Forwarding";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tbl_rw_top {width:563px;}
+    .txt .main_tbl .tbl_rw1 .tbl_cls1 {min-height:72px;}
+    .txt .main_tbl .tbl_rw1 {width:auto;}
+    .remve_bg {background:#fff;}
+    .tbl_cls1 span {font-size:11px;}
+    .tbl_add_bg {background: #e04c02;color:#fff; /* Old browsers */
+background: -moz-linear-gradient(top,  #e04c02 1%, #c1181f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#e04c02), color-stop(100%,#c1181f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #e04c02 1%,#c1181f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #e04c02 1%,#c1181f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #e04c02 1%,#c1181f 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #e04c02 1%,#c1181f 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e04c02', endColorstr='#c1181f',GradientType=0 ); /* IE6-9 */}
+</style>
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Call Forwarding</h1>
+
+        <div class="txt">
+            @if(Model.Count()>0)
+            {
+            <div class="main_tbl dis_non">
+
+                <div class="tbl_rw_top">
+                    <div class="tbl_cls1 remve_bg"></div>
+                    <div class="tbl_cls1" >  Peak Hour<br>  <span>(Monday-Friday 6am to 7pm)</span> </div>
+                    <div class="tbl_cls1"> Off-Peak Hour<br> <span>(Monday-Friday 7pm &ndash; 6am)</span><br><span>(Saturday-Sunday &ndash; All Day)</span>  </div>
+                </div>
+                @foreach(var item in Model)
+                {
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1 tbl_add_bg" style="color:#fff;font-weight:bold;">@if(item.Network_Type.ToString() == "bmobile To bmobile") { <b>On Net</b>} else{ <b>Off Net</b>}<br /><span>(@item.Network_Type)</span></div>
+                    <div class="tbl_cls1">@item.Peak_Hour</div>
+                    <div class="tbl_cls1">@item.Offpeak_Hour</div>
+                </div>
+                }
+            </div>
+            }
+        </div>
+    </div>
+</div>

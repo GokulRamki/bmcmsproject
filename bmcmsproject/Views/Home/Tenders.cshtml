@@ -1,0 +1,67 @@
+﻿@model bmcms.Models.tendes_obj
+@{
+    ViewBag.Title = "Tenders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Tenders</h1>
+
+        <div class="txt">
+            <p>Opportunities for businesses to respond to bmobile-Vodafone’s current Tenders, Expression of Interest, Request for Proposals, Request for Information and Request for Quotations</p>
+         @if (Model != null)
+            {
+               
+                
+                if (Model.Open_tenders.Count > 0)
+                {
+                <p><b>Current:</b></p>
+                <ol style="list-style-type: decimal;">
+                    @foreach (var item in Model.Open_tenders)
+                    {
+                        if ((item.Tender_Status == true)&&(item.Tender_doc2!=null))
+                        {
+                        <li>
+                            <p>@item.Tender_name  - <strong><span style="color:green"><a href="/Upload/@item.Tender_doc" target="_blank" style="color:green"> Open </a></span></strong><br /> Click <a href="/Upload/@item.Tender_doc2" target="_blank" style="color:green">Here </a>To Download Tender evaluation template</p>
+                        </li> 
+                        }
+                        else
+                        {
+                        if (item.Tender_Status == true)
+                        {
+                             <li>
+                            <p>@item.Tender_name  - <strong><span style="color:green"><a href="/Upload/@item.Tender_doc" target="_blank" style="color:green"> Open </a></span></strong><br /> 
+                        </li> 
+                        }
+                        }
+
+                    }
+                </ol>
+                }
+                
+             
+            
+            <div style="clear: both;"></div>
+                if (Model.Closed_tenders.Count > 0)
+                {                
+                <p><b>Closed:</b></p>
+                <ol style="list-style-type: decimal;">
+                    @foreach (var item in Model.Closed_tenders)
+                    {
+                        if (item.Tender_Status == false)
+                        {
+                        <li>
+                            <p>@item.Tender_name  - <strong><span style="color: #ff0000;">Closed</span></strong></p>
+                        </li> 
+                        }
+
+                    }
+                </ol>  
+                }              
+            }
+        </div>
+    </div>
+
+</div>

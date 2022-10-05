@@ -1,0 +1,387 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Network Coverage";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BMobile Towers</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6erSmJ3kkpNMb8o6uz_n8vnI6nmitBG0&sensor=true">
+    </script>
+    <script type="text/javascript">
+var markers = [
+   {
+    "longitude":147.1844000,
+    "latitude":-9.4463400,
+    "content":"BemobileH.Q.,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.2279100,
+    "latitude":-9.4407000,
+    "content":"A.T.S.,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1878200,
+    "latitude":-9.4814500,
+    "content":"AirNiugini Hill,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.2529300,
+    "latitude":-9.3977900,
+    "content":"BomanaExchange,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1965700,
+    "latitude":-9.4663300,
+    "content":"BorokoOld Exchange,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1661100,
+    "latitude":-9.4574400,
+    "content":"Burns Peak,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1479900,
+    "latitude":-9.3987800,
+    "content":"GerehuEarth Station,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1611700,
+    "latitude":-9.3905300,
+    "content":"GerehuExchange,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.2099100,
+    "latitude":-9.4439500,
+    "content":"Jacksons Airport,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1680300,
+    "latitude":-9.4313200,
+    "content":"NHCTokarara,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1949700,
+    "latitude":-9.4615500,
+    "content":"NewBoroko Exchange,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1828372,
+    "latitude":-9.4790159,
+    "content":"Pacific View Apartments,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1462900,
+    "latitude":-9.4823700,
+    "content":"PagaHill,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1376300,
+    "latitude":-9.4379500,
+    "content":"RabuHill,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.2290600,
+    "latitude":-9.5007800,
+    "content":"TauramaBarracks,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1831800,
+    "latitude":-9.4343400,
+    "content":"TelikomRumana,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.1700600,
+    "latitude":-9.4162800,
+    "content":"University Hill,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":147.2073100,
+    "latitude":-9.4593100,
+    "content":"WongaHill,NCD",
+    "title":"NCD"
+  },
+  {
+    "longitude":146.8174400,
+    "latitude":-9.0152100,
+    "content":"Agevairu,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.3615600,
+    "latitude":-9.5914000,
+    "content":"BarakauHill",
+    "title":"Central"
+  },
+  {
+    "longitude":147.0127000,
+    "latitude":-9.3765400,
+    "content":"BoeraH.F. Station",
+    "title":"Central"
+  },
+  {
+    "longitude":148.4540100,
+    "latitude":-10.1145200,
+    "content":"BomuguinaStation,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.5521047,
+    "latitude":-9.7968759,
+    "content":"GabagabaJunction,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.4118810,
+    "latitude":-9.6529611,
+    "content":"Gaire,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.2739300,
+    "latitude":-9.3460800,
+    "content":"GoldieBarracks,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":146.6485500,
+    "latitude":-8.7501100,
+    "content":"Haraopokina,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.7328200,
+    "latitude":-10.0839600,
+    "content":"Hula,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":148.2132000,
+    "latitude":-10.0644100,
+    "content":"Iopara,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.6386900,
+    "latitude":-9.9203100,
+    "content":"Kemabolo,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":148.1827600,
+    "latitude":-10.0726100,
+    "content":"KupianoExchange,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.6813800,
+    "latitude":-9.8034000,
+    "content":"KwikilaStation,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.0267156,
+    "latitude":-9.3429665,
+    "content":"L.N.G.,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":148.3683300,
+    "latitude":-10.1792900,
+    "content":"Lalaura,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.2898600,
+    "latitude":-9.5348600,
+    "content":"LoloataIsland,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.0512300,
+    "latitude":-9.4073500,
+    "content":"ManuagaH.F. Hill,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":148.0167700,
+    "latitude":-10.1302000,
+    "content":"Maopa,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.8038900,
+    "latitude":-9.8836500,
+    "content":"Matairuka,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":148.4772500,
+    "latitude":-10.0148300,
+    "content":"MoreguinaStation,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.2098100,
+    "latitude":-9.1760900,
+    "content":"MountAdoa,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.6118890,
+    "latitude":-9.8341111,
+    "content":"MountBoregoro,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":146.9345200,
+    "latitude":-8.9848300,
+    "content":"MountDibama,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.2350200,
+    "latitude":-9.3348300,
+    "content":"MountLawes,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":146.7165900,
+    "latitude":-8.9024000,
+    "content":"MountUiasi,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.0092300,
+    "latitude":-9.3088200,
+    "content":"PapaPrimarySchool,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.9583400,
+    "latitude":-9.9303800,
+    "content":"SiligogoHill,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.4248800,
+    "latitude":-9.4186800,
+    "content":"SogeriExchange,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.3157000,
+    "latitude":-9.5261700,
+    "content":"Tubusereia,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.1393700,
+    "latitude":-9.1005200,
+    "content":"Vanapa,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":147.3681800,
+    "latitude":-9.4302000,
+    "content":"Variarata,Central",
+    "title":"Central"
+  },
+  {
+    "longitude":146.4705080,
+    "latitude":-8.6288517,
+    "content":"Waima,Central",
+    "title":"Central"
+	}];
+
+function initialize(val) {
+var mapOptions = {
+center: new google.maps.LatLng(-9.5000, 147.1167),
+zoom: 8,
+mapTypeId: google.maps.MapTypeId.ROADMAP
+//  marker:true
+};
+
+var infoWindow = new google.maps.InfoWindow();
+var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+for (i = 0; i < markers.length; i++) {
+var data = markers[i]
+if(data.title==val || val=='test')
+{
+
+var image = {
+    url: '../Images/towerred.png',
+    // This marker is 20 pixels wide by 32 pixels tall.
+    size: new google.maps.Size(20, 32),
+    // The origin for this image is 0,0.
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at 0,32.
+    anchor: new google.maps.Point(0, 32)
+};
+
+
+var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
+var marker = new google.maps.Marker({
+position: myLatlng,
+map: map,
+title: data.title,
+icon: image,
+animation: google.maps.Animation.DROP
+});
+
+(function(marker, data) {
+
+// Attaching a click event to the current marker
+google.maps.event.addListener(marker, "mouseover", function(e) {
+infoWindow.setContent(data.content);
+infoWindow.open(map, marker);
+});
+})(marker, data);
+}
+}
+}
+    </script>
+</head>
+<body onload="initialize('test')">
+    <form id="form1" runat="server">
+        <div id="map_canvas" style="width: 100%; height: 90%"></div>
+        <div style="">
+            <a href="javascript:initialize('NCD');">NCD</a>
+            <a href="javascript:initialize('Central');">Central</a>
+            <a href="javascript:initialize('test');">no filters</a>
+        </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@using MvcPaging
+@model IPagedList<bmcms.Models.reseller_model>
+<style>
+   .pager1 ul li
+    {
+        display: inline; padding-left:5px;
+    }
+</style>
+@if (Model.Count > 0)
+{
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Delear Name
+                </th>
+                <th>Contact Person
+                </th>
+                <th>Contact Number
+                </th>
+                <th>Town
+                </th>
+                <th>Segment Type
+                </th>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+
+                foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @item.dealer_name
+                    </td>
+                    <td>
+                        @item.contact_person
+                    </td>
+                    <td>
+                        @item.contact_no
+                    </td>
+
+                    <td>
+                        @item.town
+                    </td>
+                    <td>
+                        @item.segment_name
+                    </td>
+                </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+    <div class="pager1">
+        @Html.Raw(Ajax.Pager(
+            new Options
+            {
+                PageSize = Model.PageSize,
+                TotalItemCount = Model.TotalItemCount,
+                CurrentPage = Model.PageNumber,
+                ItemTexts = new ItemTexts() { Next = "Next", Previous = "Previous", Page = "" },
+                ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Page {0}." },
+                Size = Size.normal,
+                Alignment = Alignment.centered,
+                IsShowControls = true,
+                IsShowFirstLast = true,
+                CssClass = ""
+            },
+            new AjaxOptions
+            {
+                UpdateTargetId = "grid-list",
+                OnBegin = "beginPaging",
+                OnSuccess = "successPaging",
+                OnFailure = "failurePaging"
+            }, new { controller = "Home", action = "reseller_list", sSegment = ViewData["sSegment"], sProvince = ViewData["sProvince"], sDistrict = ViewData["sDistrict"], sTown = ViewData["sTown"] }))
+        <div class="well">
+            Showing <span class="badge badge-success">@Model.ItemStart</span> to <span class="badge badge-success">@Model.ItemEnd</span>
+            of <span class="badge badge-info">@Model.TotalItemCount</span> entries
+        </div>
+    </div>
+}
+else
+{
+    <div style="padding:15px;text-align:center;">
+        No Records found
+    </div>
+}

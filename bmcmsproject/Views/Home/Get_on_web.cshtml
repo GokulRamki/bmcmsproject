@@ -1,0 +1,25 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Get On Web";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Get On Web</h1>
+                @if (Model != null)
+                {
+                    @Html.Raw(Model.page_txt)
+                }
+@*        <div class="txt">
+            <p>Now the power of the internet is in the palm of your hands! Access the internet anytime, anywhere!.</p>
+            <p>Browse and surf with your smart phone! Discover bmobile’s mobile internet affordable rates!</p>
+            <p>Download and experience a whole new application for your phone. Don’t forget you’ll need an internet enabled and configured handset to enjoy access to the World Wide Web.</p>
+            <p>Call 1555 and ask for assistance or follow instructions under <a title="FAQ's" href="/faq/">FAQ</a>. You’ll have access to the web in no time</p>
+        </div>*@
+
+    </div>
+
+</div>

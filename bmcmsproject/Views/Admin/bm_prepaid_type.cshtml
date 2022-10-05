@@ -1,0 +1,46 @@
+﻿@model bmcms.Models.bm_prepaid_type_cms
+@{
+    ViewBag.Title = "Prepaid Types";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_prepaid_type", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Prepaid Type</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            <div class="page_box">
+                <div class="left_side">Type</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Prepaid_type)
+                    @Html.ValidationMessageFor(m=>m.Prepaid_type)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.Page_id, new SelectList(ViewBag.pages, "Id", "Page_name"), "select")
+                    @Html.ValidationMessageFor(m=>m.Page_id)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Prepaid_type'"/>
+
+                </div>
+            </div>
+        </div>        
+    }
+</div>

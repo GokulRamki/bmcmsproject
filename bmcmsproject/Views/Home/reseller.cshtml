@@ -1,0 +1,27 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Reseller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Reseller</h1>
+        @if (Model != null)
+        {
+            @Html.Raw(Model.page_txt)
+        }
+
+    </div>
+
+</div>
+
+<style type="text/css">
+    ul {
+        list-style-type: disc;
+        font-family: "MyriadProRegular";
+        font-size: 14px;
+        line-height: 30px;
+    }
+</style>

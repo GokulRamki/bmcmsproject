@@ -1,0 +1,60 @@
+﻿@model bmcms.Models.bm_faq_title_cms
+@{
+    ViewBag.Title = "Faq Title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_Faq_Title", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Faq Title</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            <div class="page_box">
+                <div class="left_side">Faq Title</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Title,new { @style="width:500px;" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+            </div>
+
+            <div class="page_box">
+                <div class="left_side">Name</div>
+                <div class="right_side">
+                    @Html.TextBoxFor(m => m.faq_name, new { @style = "width:500px;" })
+                    @Html.ValidationMessageFor(m => m.faq_name)
+            </div>
+        </div>
+
+            <div class="page_box">
+                <div class="left_side">Redirect Url<span style="color:#808080;">(optional)</span></div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Redirect_url, new { @style="width:500px;" })</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Order Id</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Title_Order)
+                    @Html.ValidationMessageFor(m => m.Title_Order)
+                </div>
+                
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Faq_Title'"/>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

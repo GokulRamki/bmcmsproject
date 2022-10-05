@@ -1,0 +1,85 @@
+﻿@model bmcms.Models.bm_tender_cms
+@{
+    ViewBag.Title = "bm_Tenders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_Tenders", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }
+        <div class="sub_page">
+            <h2>Tender Detail</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Tender_doc)
+            <div class="page_box">
+                <div class="left_side">Tender Title</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.Tender_name, new { @style = "width:500px;height:50px;" })
+                    @Html.ValidationMessageFor(m => m.Tender_name)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Tender Closing Date</div>
+                <div class="right_side">@Html.EditorFor(m => m.Tender_closing_date, string.Format("{0:dd/MM/yyyy}", Model.Tender_closing_date) ,new { @class="datefiled" })
+                    @Html.ValidationMessageFor(m => m.Tender_closing_date)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Upload Tender Doc</div>
+                <div class="right_side">@Html.TextBox("Tender_doc", null, new { @type = "file" })@if (ViewBag.ErMsg != null)
+                                                                                                 {<span class="field-validation-error">@ViewBag.ErMsg</span> }
+                    @if (Model.Tender_doc != null)
+                    {<a  href="/Upload/@Model.Tender_doc" target="_blank">View Doc</a> }
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Evaluation Form</div>
+                <div class="right_side">@Html.TextBox("Tender_doc2", null, new { @type = "file" })@if (ViewBag.ErMsg != null)
+                                                                                                 {<span class="field-validation-error">@ViewBag.ErMsg</span> }
+                    @if (Model.Tender_doc2 != null)
+                    {<a  href="/Upload/@Model.Tender_doc2" target="_blank">View Doc</a> }
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Status Of Tender</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Tender_Status)</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                   <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Tenders'" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.addMethod('date',
+               function (value, element) {
+                   if (this.optional(element)) {
+                       return true;
+                   }
+                   var valid = true;
+                   try {
+                       $.datepicker.parseDate('dd/mm/yy', value);
+                   }
+                   catch (err) {
+                       valid = false;
+                   }
+                   return valid;
+               });
+            $('#Tender_closing_date').datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+    </script>
+}

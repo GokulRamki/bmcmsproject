@@ -1,0 +1,40 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Sitemap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .txt ul {
+        padding-bottom: 0px;
+    }
+
+    .txt li a {
+        text-decoration: none;
+        color: #CE2E13;
+        font-weight:bold;
+    }
+
+    .txt li {
+        list-style-type: disc;
+    }
+
+        .txt li ul li {
+            list-style-type: circle;
+        }
+    .txt li ul li a {
+        font-weight:normal;
+    }
+</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        @if (Model != null)
+        {
+            <h1>@Model.Page_name</h1>
+            <div class="txt">
+                @Html.Raw(Model.page_txt)
+            </div>
+        }
+    </div>
+
+</div>

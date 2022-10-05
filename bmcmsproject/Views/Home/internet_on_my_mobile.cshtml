@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "Internet On My Mobile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .row {
+  width:100%;
+}
+
+
+.row:after {
+  clear: both;
+}
+    .col-md-4, .col-md-8, .col-md-5 {
+        float: left;
+    }
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+    .col-md-5 {
+        width: 50%;
+    }
+    .mobile_pan {
+        margin: 40px auto;
+        padding: 0px 0px 5px 0px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    .home {
+        border: 1px solid #AEAEAE;
+    }
+
+
+    .mobile_pan .subtitle {
+        height: 35px;
+        margin: 0px 4px 10px 4px;
+        padding-left: 15px;
+        line-height: 35px;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        color: #0489B1;
+        background-color: #EDEAE4;
+        background-image: -ms-linear-gradient(right, #FFFFFF 0%, #EDEAE4 100%);
+        background-image: -moz-linear-gradient(right, #FFFFFF 0%, #EDEAE4 100%);
+        background-image: -o-linear-gradient(right, #FFFFFF 0%, #EDEAE4 100%);
+        background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #FFFFFF), color-stop(1, #EDEAE4 ));
+        background-image: -webkit-linear-gradient(right, #FFFFFF 0%, #EDEAE4 100%);
+        background-image: linear-gradient(to left, #FFFFFF 0%, #EDEAE4 100%);
+    }
+
+    .div-tr {
+        min-height: 30px;
+        float: left;
+    }
+
+        .div-tr .div-lbl {
+            width: 400px;
+            min-height: 30px;
+            float: left;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .div-tr .div-txt {
+            width: 550px;
+            min-height: 30px;
+            float: right;
+        }
+
+    .div-br {
+        width: 960px;
+        height: 20px;
+        float: left;
+    }
+
+    .clr {
+        clear: both;
+    }
+
+    .dd-options {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .dd-option-image {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .dd-selected img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .mobile_pan ul {
+        margin: 0px 0px 5px 0px;
+        padding: 0px;
+        float: left;
+    }
+
+        .mobile_pan ul li {
+            list-style: none;
+            margin: 3px 0px 3px 0px;
+        }
+
+    .mobile_pan p {
+        float: left;
+        padding: 5px 0px 5px 20px;
+        margin: 0px;
+    }
+    label {
+        font-size:1em;
+    }
+</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page ">
+        <h1>How to access the internet on my mobile</h1>
+
+        <div class="row">
+            <div>
+               <p> Select Your Mobile Model:</p>
+            </div>
+            <div>
+                <select id="demo-htmlselect-basic" style="height: 400px; width: auto;" onchange="changeload();">
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-shw-m100s-galaxy.jpg")"
+                        value="/Images/internet/Samsung_Anycall_SHW_M100s.htm">Samsung Anycall SHW M100s</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-siii.jpg")"
+                        value="/Images/internet/Samsung_i9300_Galaxy_SIII.htm">Samsung i9300 Galaxy SIII (Android)</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-s-ii.jpg")"
+                        value="/Images/internet/Samsung_i9100_Galaxy_SII.htm">Samsung i9100 Galaxy SII</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-s.jpg")"
+                        value="/Images/internet/Samsung_i9100_Galaxy_S.htm">Samsung i9100 Galaxy S</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-mini-s5570.jpg")"
+                        value="/Images/internet/Samsung_Galaxy_Mini_GT_S5570.htm">Samsung Galaxy Mini GT-S5570</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/Samsung_Galaxy_GT-S5690.jpg")"
+                        value="/Images/internet/Samsung_Galaxy_GT_S5690.htm">Samsung Galaxy GT-S5690</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-beam-2012.jpg")"
+                        value="/Images/internet/Samsung_Galaxy_Beam_GT_i8530.htm">Samsung Galaxy Beam GT-i8530</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-y-s5360.jpg")"
+                        value="/Images/internet/Samsung_S5360_Galaxy_Y.htm">Samsung S5360 Galaxy Y</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-champ-c3300.jpg")"
+                        value="/Images/internet/Samsung_C3303.htm">Samsung C3303</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-pocket.jpg")"
+                        value="/Images/internet/Samsung_S5300B.htm">Samsung S5300B (Galaxy Pocket)</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-note-ii-n7100.jpg")"
+                        value="/Images/internet/Samsung_N7100_Galaxy_Note_II.htm">Samsung N7100 Galaxy Note II</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-wave-3.jpg")"
+                        value="/Images/internet/Samsung_GT_S8600_Wave3.htm">Samsung GT S8600 Wave 3</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-b7330-omniapro.jpg")"
+                        value="/Images/internet/Samsung_B7330_OMNIA_PRO.htm">Samsung B7330 OMNIA PRO</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-f480.jpg")"
+                        value="/Images/internet/Samsung_f480.htm">Samsung f480</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-b3210-corbytxt.jpg")"
+                        value="/Images/internet/Samsung_GT_B3210_Corby_TXT.htm">Samsung GT B3210 Corby TXT</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-tab-2.jpg")"
+                        value="/Images/internet/Samsung_P3100_Galaxy_Tab_II.htm">Samsung P3100 Galaxy Tab II</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-s3500.jpg")"
+                        value="/Images/internet/Samsung_S3500.htm">Samsung S3500</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-mini-s5830.jpg")"
+                        value="/Images/internet/Samsung_S5830_Galaxy_Ace.htm">Samsung S5830 Galaxy Ace</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-s-iii-mini.jpg")"
+                        value="/Images/internet/Samsung_I8190_Galaxy_SIII_Mini.htm">Samsung - I8190 Galaxy SIII Mini</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-c5212.jpg")"
+                        value="/Images/internet/Samsung_C5212.htm">Samsung C5212</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-nexus.jpg")"
+                        value="/Images/internet/Samsung_i9250_Galaxy_Nexus.htm">Samsung i9250 Galaxy Nexus</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/Samsung_N7102_Galaxy_Note_II.jpg")"
+                        value="/Images/internet/Samsung_N7102_Galaxy_Note_II.htm">Samsung N7102 Galaxy Note II</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-nexus.jpg")"
+                        value="/Images/internet/Samsung_i9250_Galaxy_Nexus_2.htm">Samsung i9250 Galaxy Nexus</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-siii.jpg")"
+                        value="/Images/internet/Samsung_Galaxy_S_III.htm">SAMSUNG GALAXY S III</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-s.jpg")"
+                        value="/Images/internet/Samsung_Galaxy_S_i9000.htm">Samsung Galaxy S i9000</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-galaxy-siii.jpg")"
+                        value="/Images/internet/Samsung_i9300_Galaxy_S_III.htm">Samsung i9300 Galaxy S III</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-n700-galaxy-note.jpg")"
+                        value="/Images/internet/Samsung_N7000_Galaxy_Note.htm">Samsung - N7000 Galaxy Note</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/samsung/samsung-p1-galaxy-tab.jpg")"
+                        value="/Images/internet/Samsung_P1_Galaxy_Tab_GPRS.htm">Samsung - P1 Galaxy Tab -GPRS</option>
+                    <option data-description="" data-imagesrc="/Images/samsung/samsung-e250.gif"
+                        value="/Images/internet/Samsung_E250.htm">Samsung E250</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/htc/htc-smart.jpg")" value="/Images/internet/HTC_Smart_F318.htm">HTC Smart F318</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/htc/htc-desire-hd.jpg")" value="/Images/internet/HTC_A9191_Desire_HD.htm">HTC A9191 Desire HD</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/htc/htc-explorer.jpg")" value="/Images/internet/HTC_Explorer_A310B.htm">HTC Explorer A310B</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/htc/htc-explorer.jpg")" value="/Images/internet/HTC_EXPLORER_A310E.htm">HTC EXPLORER A310E</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/htc/htc-diamond2.jpg")" value="/Images/internet/HTC_TOUCH_DAIMOND_2.htm">HTC TOUCH DAIMOND 2</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-e72.jpg")" value="/Images/internet/Nokia_E72.htm">Nokia E72</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-x2-05.jpg")" value="/Images/internet/Nokia_X2_05.htm">Nokia X2-05</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-201.jpg")"
+                        value="/Images/internet/Nokia_Asha_201.htm">Nokia Asha 201</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-e5.jpg")" value="/Images/internet/Nokia_E5.htm">Nokia E5</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-5130-music.jpg")"
+                        value="/Images/internet/Nokia_5130_Express_Music.htm">Nokia 5130 Express Music</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia6020.gif")" value="/Images/internet/Nokia_6020.htm">Nokia 6020</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-c1-02.jpg")" value="/Images/internet/Nokia_C1_02.htm">Nokia C1 - 02</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-e63.jpg")" value="/Images/internet/Nokia_E63.htm">Nokia E63</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-e71.jpg")" value="/Images/internet/Nokia_E71.htm">Nokia E71</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-c5-03.jpg")" value="/Images/internet/Nokia_C5_03.htm">Nokia C5-03</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-n79.jpg")" value="/Images/internet/Nokia_N79.htm">Nokia N79</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-n82.gif")" value="/Images/internet/Nokia_N82.htm">Nokia N82</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-c3.jpg")" value="/Images/internet/Nokia_C3.htm">Nokia C3</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-x3.jpg")" value="/Images/internet/Nokia_X3.htm">Nokia X3 </option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-200.jpg")"
+                        value="/Images/internet/Nokia_Asha_200.htm">Nokia Asha 200</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-203.jpg")"
+                        value="/Images/internet/Nokia_Asha_203.htm">NOKIA Asha 203</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-300.jpg")"
+                        value="/Images/internet/Nokia_Asha_300.htm">Nokia Asha 300</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-303.jpg")"
+                        value="/Images/internet/Nokia_Asha_303.htm">Nokia Asha 303</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-n70.gif")" value="/Images/internet/Nokia_N70.htm">Nokia N70</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-c2-05.jpg")" value="/Images/internet/Nokia_C2_05.htm">Nokia C2-05</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-808-pureview.jpg")"
+                        value="/Images/internet/Nokia_Pureview_808.htm">Nokia Pureview 808</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-2730.jpg")" value="/Images/internet/Nokia_2730.htm">NOKIA 2730</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-5200.gif")" value="/Images/internet/Nokia_5200.htm">NOKIA 5200</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-5730-xpressmusic.jpg")"
+                        value="/Images/internet/Nokia_5730.htm">Nokia 5730</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-lumia-710.jpg")"
+                        value="/Images/internet/Nokia_Lumia_710.htm">Nokia Lumia 710</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-5800-xpressmusic.jpg")"
+                        value="/Images/internet/Nokia_Music_Express.htm">NOKIA MUSIC EXPRESS</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-asha-300.jpg")"
+                        value="/Images/internet/Nokia_Asha_300_2.htm">Nokia Asha 300</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-x2.jpg")" value="/Images/internet/Nokia_X2_00.htm">Nokia X2-00</option>
+                    <option data-description="" data-imagesrc="@Url.Content("~/Images/nokia/nokia-c5.jpg")" value="/Images/internet/Nokia_C5.htm">Nokia C5</option>
+                </select>
+            </div>
+
+            <div class="sub_page">
+            <div id="MobileData" class="div-tr">
+            </div>
+            <div class="clr"></div>
+            <div class="div-tr">
+                <div class="mobile_pan">
+                   <div class="subtitle"> APN settings:</div><br />
+                    <div class="div-tr">
+                       <p> From your relevant menu screen select Settings and then select mobile Networks.</p>
+                        <div class="clr"></div>
+                       <p>Enter the following APN details.</p> 
+                         <div class="clr"></div>                      
+                       <p>Fill in the following details;</p>
+                        <div class="clr"></div>
+                        <table>
+                            <tr class="row"><td style="width:60%">•  Name:</td><td>BMOBILE WEB</td></tr>
+                            <tr class="row"><td>•  APN:</td><td>internet (all in lower case)</td></tr>
+                            <tr class="row"><td >•  APN type:</td><td>default (all in lower case)</td></tr>
+                            <tr class="row"><td >•  Proxy:</td><td>Leave Blank</td></tr>
+                            <tr class="row"><td >•  Username:</td><td>Leave Blank</td></tr>
+                            <tr class="row"><td >•  Password:</td><td>Leave Blank</td></tr>
+                            <tr class="row"><td >•  MMSC: </td><td >Leave Blank</td></tr>
+                            <tr class="row"><td >•  MMS Proxy:</td><td>Leave Blank</td></tr>
+                            <tr class="row"><td >•  MCC: </td><td>537</td></tr>
+                            <tr class="row"><td >•  MNC:</td><td>01</td></tr>
+                            <tr class="row"><td >•  Authentication Type:</td><td>PAP</td></tr>
+                            <tr class="row"><td >•  ANP protocol:</td><td>Ipv4</td></tr>
+                            <tr class="row"><td >•  APN enable/disable:</td><td>Click to Tick</td></tr>
+                            <tr class="row"><td >•  Bearer: </td><td>Unspecified</td> </tr>
+                            <tr><td colspan="1"><p>Save Settings</p></td></tr>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="clr">
+        </div>
+    </div>
+</div>
+

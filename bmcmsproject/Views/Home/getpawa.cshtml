@@ -1,0 +1,33 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Get Pawa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .sub_page table {
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+    .sub_page table tr td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    padding:10px;
+}
+    .sub_page table td {
+        color: #000;
+        font-family: "MyriadProRegular";
+    }
+</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Get Pawa</h1>
+        @if (Model != null)
+        {
+            @Html.Raw(Model.page_txt)
+        }
+
+    </div>
+
+</div>

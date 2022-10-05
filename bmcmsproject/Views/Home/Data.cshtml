@@ -1,0 +1,175 @@
+﻿@model IEnumerable<bmcms.Models.bm_data_bundle_cms>
+@{
+    ViewBag.Title = "Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .txt .main_tbl .tbl_rw1 .tbl_cls1 {
+        width: 144px;
+    }
+
+        .txt .main_tbl .tbl_rw1 .tbl_cls1:last-child {
+            width: 144px;
+        }
+
+    .txt .main_tbl .tbl_rw1 {
+        width: auto;
+    }
+
+    .tbl_cls1 {
+        width: 144px;
+    }
+
+    .sub_page {
+        font-family: 'PTSansRegular';
+    }
+
+        .sub_page ol {
+            font-size: 14px;
+            line-height: 25px;
+        }
+
+        .sub_page ul {
+            font-size: 14px;
+            line-height: 25px;
+        }
+            .tbl_rw_top {
+        min-height:0px;
+    }
+    .tbl_cls1 {
+        min-height:36px;
+    }
+        .ad_bold {
+        font-weight: bold;
+    }
+</style>
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Data</h1>
+        <div class="txt">
+            <div class="tbl_title ad_bold">Data Bundles</div>
+            <div class="tbl_title ad_bold">Take Advantage of bmobile-Vodafone’s Data Bundles and Download &#8211;</div>
+            <div style="clear: both"></div>
+            <ol style="list-style-type: decimal;">
+                @foreach (var item in Model)
+                {
+                    <li>@item.bundle_data data for only @item.bundle_fee. Valid for @item.bundle_validity. Simply dial @item.subscribe_dial</li>
+                }
+@*                <li>50MB data for only K3. Valid for 24 hours. Simply dial *123*3#</li>
+                <li>70MB data for only K5. Valid for 3 days. Simply dial *123*5#</li>
+                <li>150MB data for only K10. Valid for 7 days. Simply dial *123*10#</li>
+                <li>350MB data for only K20. Valid for 14 days. Simply dial *123*20#</li>
+                <li>1.5GB data for only K80. Valid for 30 days. Simply dial *123*80#</li>*@
+            </ol>
+            <div class="main_tbl dis_non" style="width: auto;">
+                <div class="tbl_rw_top" style="width: auto;">
+                    <div class="tbl_cls1">Subscription Fee</div>
+                    <div class="tbl_cls1">Included Data</div>
+              @*      <div class="tbl_cls1">Bundle Rate per MB</div>*@
+                    <div class="tbl_cls1">Validity</div>
+                    <div class="tbl_cls1">How to subscribe? Simply Dial</div>
+                </div>
+                @foreach(var item in Model)
+                {
+                    
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1">
+                        @item.bundle_fee
+                    </div>
+                    <div class="tbl_cls1">
+                        @item.bundle_data
+                    </div>
+                @*    <div class="tbl_cls1">
+                        @item.bundle_rate
+                    </div>*@
+                    <div class="tbl_cls1">
+                        @item.bundle_validity
+                    </div>
+                    <div class="tbl_cls1">
+                        @item.subscribe_dial
+                    </div>
+                </div>
+                }
+@*                <div class="tbl_rw1">
+                    <div class="tbl_cls1">
+                        K5
+                    </div>
+                    <div class="tbl_cls1">
+                        70 MB
+                    </div>
+                    <div class="tbl_cls1">
+                        7t
+                    </div>
+                    <div class="tbl_cls1">
+                        3 Days
+                    </div>
+                    <div class="tbl_cls1">
+                        *123*5#
+                    </div>
+                </div>
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1">
+                        K10
+                    </div>
+                    <div class="tbl_cls1">
+                        150 MB
+                    </div>
+                    <div class="tbl_cls1">
+                        6t
+                    </div>
+                    <div class="tbl_cls1">
+                        7 Days
+                    </div>
+                    <div class="tbl_cls1">
+                        *123*10#
+                    </div>
+                </div>
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1">
+                        K20
+                    </div>
+                    <div class="tbl_cls1">
+                        350 MB
+                    </div>
+                    <div class="tbl_cls1">
+                        6t
+                    </div>
+                    <div class="tbl_cls1">
+                        14 Days
+                    </div>
+                    <div class="tbl_cls1">
+                        *123*20#
+                    </div>
+                </div>
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1">
+                        K80
+                    </div>
+                    <div class="tbl_cls1">
+                        1.5 GB
+                    </div>
+                    <div class="tbl_cls1">
+                        5t
+                    </div>
+                    <div class="tbl_cls1">
+                        30 Days
+                    </div>
+                    <div class="tbl_cls1">
+                        *123*80#
+                    </div>
+                </div>*@
+            </div>
+            <div style="clear: both"></div>
+            <p></p>
+            <p><b>Note: Non-bundled data rate is <span style="text-decoration: underline;">30t</span> per MB</b></p>
+            <div class="txt">
+                <ul style="list-style-type: disc">
+                    <li>Your mobile must be internet capable.</li>
+                    <li>You can subscribe to a combination of the various data bundle offerings. Validity period will extend to the plan with the longest validity.</li>
+                    <li>Unused data will be forfeited after validity period.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

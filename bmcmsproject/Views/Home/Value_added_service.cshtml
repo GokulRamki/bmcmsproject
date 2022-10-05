@@ -1,0 +1,226 @@
+﻿@model IEnumerable<bmcms.Models.bm_VAS_cms>
+@{
+    ViewBag.Title = "Value Added Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    th {
+        font-size: 14px;
+        text-align: center;
+        background: #e04c02; /* Old browsers */
+        background: -moz-linear-gradient(top, #e04c02 1%, #c1181f 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#e04c02), color-stop(100%,#c1181f)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #e04c02 1%,#c1181f 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #e04c02 1%,#c1181f 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #e04c02 1%,#c1181f 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #e04c02 1%,#c1181f 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e04c02', endColorstr='#c1181f',GradientType=0 ); /* IE6-9 */
+    }
+    .data p span {
+    color: #000000;
+    font-weight: normal;
+}
+    .data table tr td p {
+   text-align: center;
+   font-size:13px;
+   font-family: "PTSansRegular";
+color: #000;
+}
+
+    .sub_page p {
+        margin-bottom:0px;
+        padding-left:0px;
+    }
+
+
+</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Value Added Services</h1>
+
+        @if (Model != null)
+        {
+            <div class="data">
+
+                <table border="0" cellspacing="0" cellpadding="2">
+                    <thead>
+                        <tr style="height: 30px; line-height: 15px; font-weight: bold;">
+                            <th style="vertical-align: top;">Function</th>
+                            <th style="vertical-align: top;">Short Code- Dial</th>
+                            <th style="vertical-align: top;">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Prepaid_type_id == 5)
+                            {
+                            <tr>
+                                <td><b>@item.VAS_function_name</b></td>
+                                <td>@item.VAS_short_code</td>
+                                <td>@Html.Raw(item.Cost)</td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div>
+                    <p>&nbsp;</p>
+                </div>
+
+                <table border="0" cellspacing="0" cellpadding="2">
+                    <thead>
+                        <tr style="height: 30px; line-height: 15px; font-weight: bold;">
+                            <th style="vertical-align: top;">Function</th>
+                            <th style="vertical-align: top;">Short Code &#8211; SMS</th>
+                            <th style="vertical-align: top;"></th>
+                            <th style="vertical-align: top;">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"><b>To:</b></td>
+                            <td style="text-align: center;"><b>Content:</b></td>
+                            <td style="text-align: center;"></td>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Prepaid_type_id == 4)
+                            {
+                            <tr>
+                                <td><b>@item.VAS_function_name</b></td>
+                                <td style="text-align: center;">@Html.Raw(item.VAS_short_code)</td>
+                                <td style="text-align: center;">@Html.Raw(item.Response)</td>
+                                <td style="text-align: center;">@item.Cost</td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        }
+
+        <div class="data">
+
+            <div><b>Short Codes: &#8211; Dial</b></div>
+            <table border="0" cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr style="height: 30px; line-height: 15px; font-weight: bold;">
+                        <th style="vertical-align: top;">Function</th>
+                        <th style="vertical-align: top;">Short Code</th>
+                        <th style="vertical-align: top;">Response<br />
+                            <small>(All responses subject to changes)</small></th>
+                        <th style="vertical-align: top; width:150px">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var V in Model)
+                    {
+                        if (V.Prepaid_type_id == 5)
+                        {
+                        <tr>
+                            <td style="color:#000000">@Html.Raw(V.VAS_function_name_desc)</td>
+                            <td style="text-align: center;color:#000000">@Html.Raw(V.VAS_short_code_desc)</td>
+                            <td style="text-align: left;">@Html.Raw(V.Response_desc)</td>
+                            <td style="text-align: center;">@Html.Raw(V.Cost)</td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <div><b>Short Codes: &#8211; SMS</b></div>
+
+            <table border="0" cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr style="height: 30px; line-height: 15px; font-weight: bold;">
+                        <th style="vertical-align: top;">Function</th>
+                        <th style="vertical-align: top;">Short Code</th>
+                        <th style="vertical-align: top;">Response<br />
+                            <small>(All responses subject to changes)</small></th>
+                        <th style="vertical-align: top;">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var V in Model)
+                    {
+                        if (V.Prepaid_type_id == 4)
+                        {
+                        <tr>
+                            <td>@Html.Raw(V.VAS_function_name_desc)</td>
+                            <td style="text-align: center;">@Html.Raw(V.VAS_short_code_desc)</td>
+                            <td style="text-align:left">@Html.Raw(V.Response_desc) </td>
+                            <td style="text-align: center;">@V.Cost</td>
+                        </tr>
+                        }
+                    }
+@*                    <tr>
+                        <td>Display balance and subscriptions<br />
+                            <b>Display All Balances</b></td>
+                        <td style="text-align: center;">120<br />
+                            SMS Content: *</td>
+                        <td style="text-align: left;">SMS1: Bal is K 0.48.Expiry 06/07/2014.dial *123*5# to get 50MB,valid 3 days. Check balance with *120#SMS2: Your account has 27 minutes free for IDD call (if you subscribed to IDD)</td>
+                        <td style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td>Recharge using Top Up Card<br />
+                            <b>Recharge</b></td>
+                        <td style="text-align: center;">121<br />
+                            SMS Content: <b>Scratch Card PIN </b></td>
+                        <td style="text-align: left;">You have recharged K10.00, bal is K10.24, valid 05/06/2014. dial *123*2# to get 40t/min rate to all PNG networks.</td>
+                        <td style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td>Promotional Information<br />
+                            <b>Promotions</b></td>
+                        <td style="text-align: center;">1555<br />
+                            SMS Content: <b>info*</b><br />
+                            SMS Content: <b>IDD</b></td>
+                        <td style="text-align: left;">SMS1: Talk for 60 mins to Australia, Thailand, Singapore, China, India and many other countries. Dial *123*19# to get 60 IDD mins. Fee K19 valid 3 days. Type IDD and send to 1555 to get full list of applicable countriesSMS2: Dial *123*5# to get 50MB, Fee K5 valid 3 days. Dial *123*80# to get 1 GB, Fee K80 valid 30 days.Countries applicable for IDD pass. Australia, Solomon Islands, Indonesia, Malaysia, Hong Kong, Singapore, Thailand, Bangladesh, Pakistan, India, China, New Zealand, Philippines, USA, UK</td>
+                        <td style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td>Hunters Promotion(Queensland Cup Rugby League Competition)<br />
+                            <b>Hunters</b></td>
+                        <td style="text-align: center;">1999SMS Content: <b>Hunters</b><br />
+                            For other Hunters results &amp; Draws, SMS to 1999 eg &#8216;hunter 1&#8242; for Round 1 result or &#8216;hunter 6&#8242; for Round 6 Draw. 50t per SMS.<br />
+                            SMS Content: <b>Hunter 6</b><br />
+                            <b>(or Hunter6/Hunters6/hunter6)</b><br />
+                            There are <b>26 Rounds</b></td>
+                        <td style="text-align: left;">Rnd 5. Easts Tigers 20 Draw SP Hunters 20. Sun 30, March. Langlands Park. You have entered K20 credits draw. Winner to be announced FridayRnd 6. Ipswitch Jets vs SP Hunters. Sun, 6 April 3pm. North Ipswitch. You have entered K20 credits draw. Winner to be announced this FridaySMS &#8216;Hunter&#8217; for games scores. For Other Hunters results &amp; Draw, SMS to 1999 eg SMS &#8216;hunter 1&#8242; for Rnd 1, &#8216;hunter 2&#8242; for Rnd 2.</td>
+                        <td style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td><b>BSP Mobile Banking</b></td>
+                        <td style="text-align: center;">16277<br />
+                            SMS Content: <b>PIN#</b></td>
+                        <td style="text-align: center;"></td>
+                        <td style="text-align: center;">0.22</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nasfund Balance</b></td>
+                        <td style="text-align: center;">16271<br />
+                            SMS Content: <b>PIN#DOB</b></td>
+                        <td style="text-align: center;">NASFUND bal: K50905.74. Last Contribution: 13/02/2014. Housing Eligibility: YES. Housing Amount: K16722.83. Outstanding Housing Advance: K0.0</td>
+                        <td style="text-align: center;">0.25</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nambawan Super Balance</b></td>
+                        <td style="text-align: center;">16661<br />
+                            SMS Content: <b>MemberID*PIN</b></td>
+                        <td style="text-align: center;">(Housing Eligibility YES):<br />
+                            Balance:K10000.00; Last update:12062014; DOB:11/09/1978; H/A Eligibility:Yes; H/A Eligible:K5000.00; Beneficiaries:JANE HOUSE (100.00; Mobile:76276276; Postal Address:P O Box 1105 ; WAIGANI ; NATIONAL CAPITAL DISTRICT Papua New Guinea;(Housing Eligibility NO):<br />
+                            Balance:K20500.89; Last update:12062014; DOB:07/09/1979; H/A Eligibility:No; H/A Outstanding:K10000; Beneficiaries:JOHN JAMES (50.00%); JANE JAMES (50.00%); Mobile:76006007; Postal Address: P O Box 1105 ; WAIGANI ; NATIONAL CAPITAL DISTRICT Papua New Guinea.</td>
+                        <td style="text-align: center;">0.50</td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

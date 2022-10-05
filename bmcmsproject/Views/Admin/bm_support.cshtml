@@ -1,0 +1,77 @@
+﻿@model bmcms.Models.Support_Custom
+@{
+    ViewBag.Title = "bm_support";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style type="text/css">
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        box-sizing: border-box;
+    }
+</style>
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_support", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Support & Contact us</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m=>m.support_obj.Id)
+
+            <div class="page_box">
+                <div class="left_side">Page</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.support_obj.Page_name, new SelectList(ViewBag.pages,"page_name","page_name"),"Select")
+                    @Html.ValidationMessageFor(m => m.support_obj.Page_name)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Support Type</div>
+                <div class="right_side">@Html.DropDownListFor(m => m.support_obj.support_type, new SelectList(ViewBag.usertypes,"meta_value","meta_value"),"Select")
+                    @Html.ValidationMessageFor(m => m.support_obj.support_type)
+                </div>
+            </div>
+             <div class="page_box">
+                <div class="left_side">Email Id</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.support_obj.Email_Id)
+                    @Html.ValidationMessageFor(m => m.support_obj.Email_Id)
+                </div>
+            </div>
+             <div class="page_box">
+                <div class="left_side">Number</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.support_obj.Number)
+                    @Html.ValidationMessageFor(m => m.support_obj.Number)
+                </div>
+            </div>
+             <div class="page_box">
+                <div class="left_side">Days</div>
+                <div class="right_side">@Html.CheckBoxListFor(m=>m.Days_Model.PostedValues.ValueIDs,m=>m.Days_Model.AvailableValues,m=>m.Id,m=>m.Name,m=>m.IsSelected)
+                </div>
+            </div>
+             <div class="page_box">
+                <div class="left_side">Hours Of Service</div>
+                <div class="right_side">@Html.CheckBoxListFor(m=>m.Hours_Model.PostedValues.ValueIDs,m=>m.Hours_Model.AvailableValues,m=>m.Id,m=>m.Name,m=>m.IsSelected)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.support_obj.Is_Active)</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/support'"/>
+                </div>
+            </div>
+        </div>
+    }
+</div>

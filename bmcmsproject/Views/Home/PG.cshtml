@@ -1,0 +1,78 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    if (Model != null && Model.Page_Title != null)
+    {
+        ViewBag.Title = Model.Page_Title;
+    }
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table tr td, table tr th {
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+</style>
+
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        @if (Model != null)
+        {
+            <h1>@Model.Page_Title</h1>
+
+            @Html.Raw(Model.page_txt)
+        }
+        else
+        {
+            <p>No Content Available for the requesting page...</p>
+        }
+
+        @*        <p>bmobile was acquired by the Government of Papua New Guinea through an 85% shareholding in October 2013 and has been operating in PNG since 1997. It is Papua New Guinea’s first-ever mobile carrier and also operates in the Solomon Islands (since 2009). bmobile’s vision is to be the leading provider of mobile voice and data services in Papua New Guinea and the Solomon Islands and now offers high-speed data, reliable voice and SMS in all major towns in PNG and the Solomon Islands.</p>
+
+            <p>&nbsp;</p>
+
+            <p><a href="@Url.Action("vision","Home")"> Vision, Mission & Values </a></p>
+
+            <p><a href="@Url.Action("vision","Home")">BMOBILE AND VODAFONE ANNOUNCE STRATEGIC PARTNERSHIP</a></p>*@
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function country_list() {
+
+        $("#zone1").hide();
+        $("#norates").hide();
+        $("#zone2").hide();
+
+        var arrzone1 = ["australia", "new zealand", "newzealand"];
+        var arrzone2 = ["china", "fiji", "hongkong", "hong kong", "india", "indonesia", "japan", "malaysia", "philippines", "singapore", "solomon islands", "solomoniland", "srilanka", "thailand", "unitedkingdom", "united kingdom", "unitedstates", "united states", "sri lanka"];
+
+        var txtcountry = $("#country").val().toLowerCase().trim();
+
+        var rates = false;
+
+        arrzone1.forEach(function (txtzone1) {
+
+            if (txtzone1 == txtcountry) {
+                $("#zone1").show();
+                rates = true;
+            }
+        });
+
+        arrzone2.forEach(function (txtzone2) {
+
+            if (txtzone2 == txtcountry) {
+                $("#zone2").show();
+                rates = true;
+            }
+        });
+
+        if (rates == false) {
+            $("#norates").show();
+        }
+    }
+
+</script>

@@ -1,0 +1,168 @@
+﻿@model  bmcms.Models.get_in_touch
+
+@{
+    ViewBag.Title = "Suggestions and Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd wrapper">
+    <section class="content-wrapper content-pan clear-fix">
+        <section id="widget-grid" style="margin: 50px auto; margin-left: 50px; margin-right: -50px">
+            <!-- START ROW -->
+            <div class="row">
+                <div>
+                    <h1 style="font-size: 35px">Suggestions and Feedback</h1>
+                    <p>
+                        <span style="font-size: 20px; color: #bf0000">Suggestions and Feedback </span>
+                        <br />
+                        <img src="~/Images/suggestion.png" />
+
+                    </p>
+                    <p style="padding-right: 100px">Any suggestions or feedback from you is important to us. If there is any suggestions or feedback that you want to pass on to us that will help us improve our services please fill in the form below. If the matter is urgent or you would prefer to talk to us you can always visit us in store, call 1555 from your bmobile-Vodafone mobile or 7600 3555 from a landline.</p>
+                    <p style="padding-right: 100px"><span style="font-size: 20px; color: #bf0000">Tell us your suggesions and feedback</span></p>
+                </div>
+                <!-- NEW COL START -->
+
+                <article class="col-sm-12 col-md-12 col-lg-8" style="float: none; margin: 5px auto; max-width: 500px;">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+                        <header>
+                            @* <span class="widget-icon"><i class="fa fa-user"></i></span>*@
+                            <h2>Suggestions and Feedback </h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                @using (Html.BeginForm("suggestionandfeedback", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmComplaints", @class = "smart-form", novalidate = "novalidate" }))
+                                {     
+                                    @Html.ValidationSummary(true)       
+                                    if (ViewBag.Message != null)
+                                    {
+                                    <fieldset id="msg_pan">
+                                        <div class="alert alert-success fade in">
+                                            <button class="close" data-dismiss="alert">
+                                                ×
+                                            </button>
+                                            <i class="fa-fw fa fa-check"></i>
+                                            @ViewBag.Message
+                                        </div>
+                                    </fieldset>
+                                    }
+                                    if (ViewBag.ErrMessage != null)
+                                    {
+                                    <fieldset id="msg_pan">
+                                        <div class="alert alert-warning fade in">
+                                            <button class="close" data-dismiss="alert">
+                                                ×
+                                            </button>
+                                            <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> @ViewBag.ErrMessage
+                                        </div>
+                                    </fieldset>
+                                    }                            
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <b>First Name:</b>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    @Html.TextBoxFor(n => n.firstname, null, new { placeholder = "First Name", @style = "width:100%" })
+                                                    @Html.ValidationMessageFor(n => n.firstname)
+                                                </label>
+                                            </section>
+
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <b>Last Name:&nbsp;</b>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    @Html.TextBoxFor(n => n.lastname, null, new { placeholder = "Last Name", @style = "width:100%" })
+                                                </label>
+                                            </section>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <b>E-mail:&nbsp;</b>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    @Html.TextBoxFor(n => n.email, null, new { placeholder = "E-mail", @style = "width:100%" })
+                                                    @Html.ValidationMessageFor(n => n.email)
+                                                </label>
+                                            </section>
+                                        </div>
+
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <b>Mobile or Account Number:&nbsp;</b>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    @Html.TextBoxFor(n => n.mobileno, null, new { placeholder = "Mobile or Account Number", @style = "width:100%" })
+                                                    @Html.ValidationMessageFor(n => n.mobileno)
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <b>Suggestions or Feedback:&nbsp;</b>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="textarea">
+                                                    @Html.TextAreaFor(n => n.suggestions, new {placeholder = "Suggestions or Feedback", @style = "width:100%;height:100px;border:1px solid" })
+                                                </label>
+                                            </section>
+                                        </div>
+
+                                    </fieldset>
+                                    <footer style="width: 94%">
+                                        <p>
+                                            <button id="btnCancel" class="btn btn-mini top_btn" type="button" onclick="window.location='/Home/pg/getintouch'" >Back</button>
+                                            <button id="btnSubmit" class="btn btn-mini top_btn" type="submit">Submit</button>
+                                        </p>
+                                    </footer>
+                                }
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- END COL -->
+            </div>
+            <!-- END ROW -->
+        </section>
+    </section>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $("#firstname").val('');
+            $("#lastname").val('');
+            $("#email").val('');
+            $("#mobileno").val('');
+            $("#suggestions").val('');
+        });
+        $('button.close').click(function () {
+            $(this).parents('#msg_pan').fadeOut('slow');
+        });
+    </script>
+}

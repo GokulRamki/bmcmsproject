@@ -1,0 +1,62 @@
+﻿@model bmcms.Models.bm_data_bundle_cms
+@{
+    ViewBag.Title = "Data Bundle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_databundle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Data Bundle</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m=>m.Id)
+            <div class="page_box">
+                <div class="left_side">Bundle Data</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.bundle_data)
+                    @Html.ValidationMessageFor(m => m.bundle_data)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Bundle Fee</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.bundle_fee)
+                    @Html.ValidationMessageFor(m => m.bundle_fee)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Bundle Rate Per MB</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.bundle_rate)
+                    @Html.ValidationMessageFor(m => m.bundle_rate)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Bundle Validity</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.bundle_validity)
+                    @Html.ValidationMessageFor(m => m.bundle_validity)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Subscriber Dial No.</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.subscribe_dial)
+                    @Html.ValidationMessageFor(m => m.subscribe_dial)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/Data_bundle'"/>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

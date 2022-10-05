@@ -1,0 +1,38 @@
+﻿@model bmcms.Models.bm_marquee_cms
+@{
+    ViewBag.Title = "Marquee Text";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_marquee", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }        
+        <div class="sub_page">
+            <h2>Marquee</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m=>m.Id)
+            <div class="page_box">
+                <div class="left_side">Marquee Text</div>
+                <div class="right_side">@Html.TextAreaFor(m => m.Marquee_txt, new { @style="width:500px;" })
+                    @Html.ValidationMessageFor(m => m.Marquee_txt)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />
+                    <input type="button" id="BtnBack" value="Back"  onclick="window.location = '/Admin/marquee'"/>
+                </div>
+            </div>
+        </div>
+    }
+</div>

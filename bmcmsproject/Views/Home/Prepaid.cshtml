@@ -1,0 +1,161 @@
+﻿@model IEnumerable<bmcms.Models.bm_prepaid_plan_cms>
+@{
+    ViewBag.Title = "Prepaid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .sub_page table tr td {
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+
+    .sub_page table {
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+    }
+</style>
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Prepaid</h1>
+       
+        @if (Model != null && Model.Count()>0)
+        {
+            <div class="txt">
+                <div class="tbl_title ad_bold">bmobile-Vodafone To bmobile-Vodafone</div>
+                <div class="main_tbl dis_non">
+                    <div class="tbl_rw_top">
+                        <div class="tbl_cls1"></div>
+                        <div class="tbl_cls1">
+                            Peak Hour<br>
+                            <span>(Monday-Friday 6am to 7pm)</span>
+                        </div>
+                        <div class="tbl_cls1">
+                            Off-Peak Hour<br>
+                            <span>(Monday-Friday 7pm &ndash; 6am)</span><br>
+                            <span>(Saturday-Sunday &ndash; All Day)</span>
+                        </div>
+                        <div class="tbl_cls1">All Day</div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        if (item.Network_Type == "bmobile To bmobile")
+                        {
+<div class="tbl_rw1">
+                    <div class="tbl_cls1" style="font-weight:bold;">@item.Prepaid_Type</div>
+                    <div class="tbl_cls1">@item.Peak_Hour</div>
+                    <div class="tbl_cls1">@item.Offpeak_Hour</div>
+                    <div class="tbl_cls1">@item.All_Days</div>
+                </div>
+                        }
+                    }
+                    @*                    <div class="tbl_rw1">
+                        <div class="tbl_cls1 " style="font-weight: bold;">SMS</div>
+                        <div class="tbl_cls1">0.10</div>
+                        <div class="tbl_cls1">0.05</div>
+                        <div class="tbl_cls1"></div>
+                    </div>
+
+                    <div class="tbl_rw1">
+                        <div class="tbl_cls1 " style="font-weight: bold;">Data</div>
+                        <div class="tbl_cls1"></div>
+                        <div class="tbl_cls1"></div>
+                        <div class="tbl_cls1">0.30/mb 0.03/10kb</div>
+                    </div>*@
+                </div>
+
+
+                <div class="txt" style="margin-top: 30px;">
+                    <div class="tbl_title" style="font-weight: bold;">To Other National Networks</div>
+                    <div class="main_tbl  dis_non">
+                        <div class="tbl_rw_top">
+                            <div class="tbl_cls1"></div>
+                            <div class="tbl_cls2">
+                                Peak Hour<br>
+                                <span>(Monday-Friday 6am to 7pm)</span>
+                            </div>
+                            <div class="tbl_cls2">
+                                Off-Peak Hour<br>
+                                <span>(Monday-Friday 7pm &ndash; 6am)</span><br>
+                                <span>(Saturday-Sunday &ndash; All Day)</span>
+                            </div>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Network_Type == "bmobile To Other National Network")
+                            {
+                            <div class="tbl_rw1">
+                                <div class="tbl_cls1" style="font-weight: bold;">@item.Prepaid_Type</div>
+                                <div class="tbl_cls2">@item.Peak_Hour</div>
+                                <div class="tbl_cls2">@item.Offpeak_Hour</div>
+                            </div>
+                            }
+                        }
+@*                        <div class="tbl_rw1">
+                            <div class="tbl_cls1" style="font-weight: bold;">SMS</div>
+                            <div class="tbl_cls2">0.25</div>
+                            <div class="tbl_cls2">0.20</div>
+                        </div>*@
+
+                    </div>
+                </div>
+
+
+                <div class="txt" style="margin-top: 30px;">
+                    <div class="tbl_title ad_bold">To International Networks</div>
+                    <div class="sub_title">Select the Country :</div>
+                    <div class="sel_con">
+                        <select id="ddlCountry" onchange="BindCallRate(this);">
+                            <option value="0|0">Select Country</option>
+                            @foreach (var V in ViewBag.Call_rates)
+                            {
+                                <option value="@V.Call_rate|@V.Sms_rate">@V.Country_name</option>
+                            }
+                        </select>
+                        
+                    </div>
+                    <div id="showintdiv" style="display: none;">
+                        <table style="border-color: #efefef;" width="100%" border="1" cellspacing="0" cellpadding="2">
+                            <thead></thead>
+                            <tbody>
+                                <tr style="height: 30px; font-weight: bold;">
+                                    <td>International Rate per Country</td>
+                                    <td style="text-align: center;">Call rate per minute</td>
+                                    <td style="text-align: center;">SMS</td>
+                                </tr>
+                                <tr style="height: 30px;">
+                                    <td id="tdCountry"></td>
+                                    <td id="tdVoice" style="text-align: center;"></td>
+                                    <td id="tdSMS" style="text-align: center;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        function BindCallRate() {
+            var divid = document.getElementById("showintdiv");
+            if (divid.style.display == 'none') {
+                divid.style.display = 'block';
+            }
+            var e = document.getElementById("ddlCountry");
+            var country_plan = e.options[e.selectedIndex].value;
+
+            var country = e.options[e.selectedIndex].text;
+            document.getElementById("tdCountry").innerHTML = country;
+
+            var plans = country_plan.split('|');
+            document.getElementById("tdVoice").innerHTML = plans[0];
+            document.getElementById("tdSMS").innerHTML = plans[1];
+        }
+    </script>
+}

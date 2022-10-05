@@ -1,0 +1,58 @@
+﻿@model bmcmsproject.Models.bm_slider_cms
+@{
+    ViewBag.Title = "Slider For bmobile-Vodafone";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    @using (Html.BeginForm("bm_slider", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (ViewBag.Msg != null)
+        {
+            <div class="alert alert-danger" role="alert"><strong>Error!</strong>&nbsp;@ViewBag.Msg</div>
+        }
+        <div class="sub_page">
+            <h2>Slider</h2>
+            <p>&nbsp;</p>
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Slider_Img)
+            <div class="page_box">
+                <div class="left_side">Image Title</div>
+                <div class="right_side">
+                    @Html.TextBoxFor(m => m.Slider_name)
+                    @Html.ValidationMessageFor(m => m.Slider_name)
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Upload Image</div>
+                <div class="right_side">
+                    @Html.TextBox("slid_img", null, new { @type = "file" })@if (ViewBag.ErMsg != null)
+                    {<span class="field-validation-error">@ViewBag.ErMsg</span>}
+                    @if (Model.Slider_Img != null)
+                    {<a class="lightbox-img" href="/Upload/Banners/@Model.Slider_Img">View Image</a>}
+                </div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Redirect Url</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Redirect_url, new { @style = "width:500px;" })</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">Order by</div>
+                <div class="right_side">@Html.TextBoxFor(m => m.Img_Order)</div>
+                @Html.ValidationMessageFor(m => m.Img_Order)
+            </div>
+            <div class="page_box">
+                <div class="left_side">Active</div>
+                <div class="right_side">@Html.CheckBoxFor(m => m.Is_Active)</div>
+            </div>
+            <div class="page_box">
+                <div class="left_side">&nbsp;</div>
+                <div class="right_side">
+                    <input type="submit" value="submit" />&nbsp;
+                    <input type="button" id="BtnBack" value="Back" onclick="window.location ='/Admin/Slider'" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,15 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "Post Paid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        <h1>Post Paid</h1>
+        @if(Model!=null)
+        {
+         <p>@Html.Raw(Model.page_txt)</p>
+        }
+    </div>
+</div>

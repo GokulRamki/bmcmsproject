@@ -1,0 +1,84 @@
+﻿@model IEnumerable<bmcms.Models.bm_support_cms>
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tbl_rw_top {
+        min-height:0px;
+    }
+    .tbl_cls1 {
+        min-height:28px;
+        color:#fff;
+    }
+
+</style>
+<div class="choose_box remov_padd">
+
+    <div class="sub_page">
+        <h1>Contact Us</h1>
+
+        <div class="txt">
+            <p><b>Head Office Address:</b></p>
+            <p>
+                bmobile-Vodafone Papua New Guinea<br />
+                Level 2, bmobile-Vodafone Building<br />
+                Section 38 Allotment 32, Hohola<br />
+                Waigani Drive,<br />
+                PO Box 1055,<br />
+                Waigani<br />
+                National Capital District 131
+            </p>
+            <p>Phone: <strong style="font-family:Arial">(+675) 7600 3500</strong></p>
+            <p><b>Customer Care</b></p>
+            <p>
+                For support, bmobile-Vodafone&#8217;s customer care is available by phone or email.<br />
+                The bmobile-Vodafone customer care team are eager to assist with any questions that you may have.
+            </p>
+        </div>
+
+        <div class="txt">
+
+
+            <div class="main_tbl dis_non">
+                <div class="tbl_rw_top">
+                    <div class="tbl_cls1">Support</div>
+                    <div class="tbl_cls1">Number </div>
+                    <div class="tbl_cls1">Days </div>
+                    <div class="tbl_cls1">Hours of Service</div>
+                </div>
+                @foreach(var item in Model)
+                {
+                <div class="tbl_rw1">
+                    <div class="tbl_cls1" style="font-weight:bold;">@item.support_type</div>
+                    <div class="tbl_cls1">@item.Number</div>
+                    <div class="tbl_cls1">@item.Days</div>
+                    <div class="tbl_cls1">@item.Hour_of_service</div>
+                </div>
+                }
+            </div>
+
+            <div style="clear:both;"></div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <div class="main_tbl dis_non">
+                <div class="tbl_rw_top" style="width: 50.8%;">
+                    <div class="tbl_cls1">Support</div>
+                    <div class="tbl_cls1">Email </div>
+                </div>
+                @foreach(var item in Model)
+                {
+                <div class="tbl_rw1" style="width: 51%;">
+                    <div class="tbl_cls1" style="font-weight:bold;">@item.support_type</div>
+                    <div class="tbl_cls1" style="width: 194px;"><a  href="mailto: @item.Email_Id" style="text-decoration:none;color:#e04c02;">@item.Email_Id</a></div>
+                </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

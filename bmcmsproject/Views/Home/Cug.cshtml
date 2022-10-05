@@ -1,0 +1,15 @@
+﻿@model bmcms.Models.static_page_model
+@{
+    ViewBag.Title = "CUG";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="choose_box remov_padd">
+    <div class="sub_page">
+        @if (Model != null)
+        {
+            <h1>@Model.Page_name</h1>
+            @Html.Raw(Model.page_txt)
+        }
+    </div>
+</div>
